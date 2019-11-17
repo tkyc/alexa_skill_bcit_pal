@@ -4,6 +4,7 @@ const s3 = new AWS.S3();
 let skill;
 
 //Room ID maps to the index in the rooms array in the schedule.json file
+//Need whitespace for cases where slot value has whitespace
 const roomMap = {
     "130D": 0,
     "130E": 1,
@@ -15,7 +16,13 @@ const roomMap = {
     "138": 7,
     "140": 8,
     "141": 9,
-    "312": 10
+    "312": 10,
+    "130 D": 0,
+    "130 E": 1,
+    "130 F": 2,
+    "130 G": 3,
+    "130 H": 4,
+    "130 I": 5,
 };
 
 const launchRequestHandler = {
@@ -25,7 +32,7 @@ const launchRequestHandler = {
 
     handle(handlerInput) {
         return handlerInput.responseBuilder
-            .speak("Opening B.C.I.T pal!")
+            .speak("Welcome to B.C.I.T pal.")
             .reprompt("You can ask for a study room schedule, exam schedule for a course, or ask for a u-pass renewal.")
             .getResponse();
     }
@@ -44,6 +51,13 @@ const studyRoomScheduleIntentHandler = {
         };
 
         const roomId = Alexa.getSlotValue(handlerInput.requestEnvelope, "StudyRoom");
+        
+        if (roomMap[roomId] == null) {
+            return handlerInput.responseBuilder
+                .speak("That is not a valid room ID.")
+                .getResponse();
+        }
+
         const roomSchedule = () => {
             return new Promise((resolve, reject) => {
                 s3.getObject(params, (err, data) => {
@@ -52,9 +66,9 @@ const studyRoomScheduleIntentHandler = {
                     const masterSchedule = JSON.parse(data.Body.toString("utf-8"));
                     const roomSchedule = masterSchedule["rooms"][roomMap[roomId]];
 
-                    if (roomSchedule.length > 0) {
+                    if (roomSchedule["booked_hours"].length > 0) {
                         let response = `Room ${roomId} is booked from `;
-                        roomSchedule.booked_hours.forEach(hour => {
+                        roomSchedule["booked_hours"].forEach(hour => {
                           response += hour.replace(/-/, "to") + ", "; 
                         });
                         resolve(response);
