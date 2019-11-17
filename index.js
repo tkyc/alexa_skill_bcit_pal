@@ -1,5 +1,7 @@
 const AWS = require("aws-sdk");
+const Alexa = require("ask-sdk-core");
 const s3 = new AWS.S3();
+let skill;
 
 //Room ID maps to the index in the rooms array in the schedule.json file
 const roomMap = {
@@ -16,63 +18,43 @@ const roomMap = {
     "312": 10
 };
 
-//Handles the different request types and intent types
-const requestMap = {
-    "LaunchRequest": (callback, request) => { callback(null, launchSkill()); },
-    "IntentRequest": (callback, request) => { callback(null, handleIntent(request.intent).then((response) => {
-        buildResponse(response);
-    }))}
-};
+const launchRequestHandler = {
+    canHandle(handlerInput) {
+        return handlerInput.requestEnvelope.request.type === "LaunchRequest";
+    },
 
-//Lambda handler --- index.handler
-exports.handler = async (event, context, callback) => {
-    const request = event.request;
-    requestMap[request.type](callback, request);
-};
-
-//Handle LaunchRequest
-const launchSkill = () => {
-    return buildResponse("Launching B.C.I.T pal");
-};
-
-//Handle IntentRequest
-const handleIntent = (intent) => {
-    if (intent.name === "ScheduleIntent") {
-        const params = {
-            Bucket: "etc-bucket-a01021558",
-            Key: "schedule.json"
-        };
-        
-        return new Promise((resolve, reject) => {
-            s3.getObject(params, (err, data) => {
-                if (err) console.log(err);
-                const schedule = JSON.parse(data.Body.toString());
-                const room = schedule["rooms"][roomMap[intent.slots.room.value]];
-                let reply = `Room ${intent.slots.room.value} is booked from `;
-                
-                room.booked_hours.forEach(hour => {
-                  reply += hour.replace(/-/, "to") + " "; 
-                });
-                
-                resolve(reply);
-            });
-        });
+    handle(handlerInput) {
+        return handlerInput.responseBuilder
+            .speak("Opening B.C.I.T pal!")
+            .reprompt("You can ask for a study room schedule, exam schedule for a course, or ask for a u-pass renewal.")
+            .getResponse();
     }
 };
 
-//reply - The response Alexa provides
-//"Alexa ask study buddy is room 137 currently booked"
-const buildResponse = (reply) => {
-    let responseJson = {
-        version: "1.0",
-        response: {
-            outputSpeech: {
-                type: "PlainText",
-                text: reply
-            },
-            shouldEndSession: true
-        },
-        sessionAttributes: {}
-    };
-    return responseJson;
+const errorHandler = {
+    canHandle() {
+        return true;
+    },
+
+    handle(handlerInput, error) {
+        console.log(`Error: ${error.message}`);
+        return handlerInput.responseBuilder
+            .speak("Sorry, I do not understand the command.")
+            .reprompt("Sorry, I do not understand the command. Please say again.")
+            .getResponse();
+    }
+};
+
+exports.handler = async (event, context, callback) => {
+    if (!skill) {
+        skill = Alexa.SkillBuilders.custom()
+            .addRequestHandlers(
+                launchRequestHandler,
+            )
+            .addErrorHandlers(errorHandler)
+            .create();
+    }
+
+    const response = await skill.invoke(event, context);
+    return response;
 };

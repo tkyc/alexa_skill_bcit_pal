@@ -1,0 +1,24 @@
+{
+  "name": "alexa_skill_bcit_pal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tkyc/alexa-skill-bcit-pal.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tkyc/alexa-skill-bcit-pal/issues"
+  },
+  "homepage": "https://github.com/tkyc/alexa-skill-bcit-pal#readme",
+  "dependencies": {
+    "ask-sdk-core": "^2.7.0",
+    "ask-sdk-model": "^1.23.1"
+  }
+}
