@@ -20,13 +20,53 @@ const roomMap = {
 
 const launchRequestHandler = {
     canHandle(handlerInput) {
-        return handlerInput.requestEnvelope.request.type === "LaunchRequest";
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === "LaunchRequest";
     },
 
     handle(handlerInput) {
         return handlerInput.responseBuilder
             .speak("Opening B.C.I.T pal!")
             .reprompt("You can ask for a study room schedule, exam schedule for a course, or ask for a u-pass renewal.")
+            .getResponse();
+    }
+};
+
+const studyRoomScheduleIntentHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === "IntentRequest"
+        && Alexa.getIntentName(handlerInput.requestEnvelope) === "StudyRoomScheduleIntent";
+    },
+
+    async handle(handlerInput) {
+        const params = {
+            Bucket: "etc-bucket-a01021558",
+            Key: "schedule.json"
+        };
+
+        const roomId = Alexa.getSlotValue(handlerInput.requestEnvelope, "StudyRoom");
+        const roomSchedule = () => {
+            return new Promise((resolve, reject) => {
+                s3.getObject(params, (err, data) => {
+                    if (err) reject(err);
+
+                    const masterSchedule = JSON.parse(data.Body.toString("utf-8"));
+                    const roomSchedule = masterSchedule["rooms"][roomMap[roomId]];
+
+                    if (roomSchedule.length > 0) {
+                        let response = `Room ${roomId} is booked from `;
+                        roomSchedule.booked_hours.forEach(hour => {
+                          response += hour.replace(/-/, "to") + ", "; 
+                        });
+                        resolve(response);
+                    } else {
+                        resolve(`Room ${roomId} is unbooked for the whole day.`);
+                    }
+                });
+            });
+        };
+
+        return handlerInput.responseBuilder
+            .speak(await roomSchedule())
             .getResponse();
     }
 };
@@ -39,7 +79,7 @@ const errorHandler = {
     handle(handlerInput, error) {
         console.log(`Error: ${error.message}`);
         return handlerInput.responseBuilder
-            .speak("Sorry, I do not understand the command.")
+            .speak("Sorry, I do not understand the command. Please say again.")
             .reprompt("Sorry, I do not understand the command. Please say again.")
             .getResponse();
     }
@@ -50,6 +90,7 @@ exports.handler = async (event, context, callback) => {
         skill = Alexa.SkillBuilders.custom()
             .addRequestHandlers(
                 launchRequestHandler,
+                studyRoomScheduleIntentHandler
             )
             .addErrorHandlers(errorHandler)
             .create();
