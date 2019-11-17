@@ -1,0 +1,448 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "b. c. i. t. pal",
+            "intents": [
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "StudyRoomScheduleIntent",
+                    "slots": [
+                        {
+                            "name": "StudyRoom",
+                            "type": "StudyRoomEnumeration"
+                        }
+                    ],
+                    "samples": [
+                        "room {StudyRoom}",
+                        "I want to know room {StudyRoom} timetable",
+                        "I want to know room {StudyRoom} schedule",
+                        "I need to know room {StudyRoom} schedule",
+                        "I need to know room {StudyRoom} timetable",
+                        "get me room {StudyRoom} timetable",
+                        "what is room {StudyRoom} timetable",
+                        "what is room {StudyRoom} schedule",
+                        "give me room {StudyRoom} timetable",
+                        "give me room {StudyRoom} schedule",
+                        "give me the timetable of room {StudyRoom}",
+                        "give me the timetable for room {StudyRoom}",
+                        "room {StudyRoom} schedule",
+                        "room {StudyRoom} timetable",
+                        "timetable of room {StudyRoom}",
+                        "timetable for room {StudyRoom}",
+                        "timetable for {StudyRoom}",
+                        "timetable of {StudyRoom}",
+                        "schedule of room {StudyRoom}",
+                        "schedule for room {StudyRoom}",
+                        "what's the timetable of room {StudyRoom}",
+                        "what's the timetable of {StudyRoom}",
+                        "what is the timetable for room {StudyRoom}",
+                        "what's the timetable for {StudyRoom}",
+                        "what is the timetable for {StudyRoom}",
+                        "I need the timetable for {StudyRoom}",
+                        "I need the timetable of {StudyRoom}",
+                        "I need the schedule of {StudyRoom}",
+                        "I need the schedule for {StudyRoom}",
+                        "{StudyRoom} timetable",
+                        "get {StudyRoom} timetable",
+                        "what is the schedule for {StudyRoom}",
+                        "what is the schedule of {StudyRoom}",
+                        "what's the schedule of {StudyRoom}",
+                        "schedule for {StudyRoom}",
+                        "schedule of {StudyRoom}",
+                        "I want the schedule of {StudyRoom}",
+                        "I want the schedule for {StudyRoom}",
+                        "I want to know the schedule for {StudyRoom}",
+                        "I want to know the schedule of {StudyRoom}",
+                        "get me the schedule for {StudyRoom}",
+                        "what's the schedule for {StudyRoom} ",
+                        "get {StudyRoom} schedule",
+                        "get the schedule for {StudyRoom}",
+                        "get me {StudyRoom} schedule",
+                        "{StudyRoom}",
+                        "{StudyRoom} schedule",
+                        "get me room {StudyRoom} schedule"
+                    ]
+                },
+                {
+                    "name": "ExamScheduleIntent",
+                    "slots": [
+                        {
+                            "name": "Course",
+                            "type": "CourseType"
+                        },
+                        {
+                            "name": "CourseCode",
+                            "type": "AMAZON.FOUR_DIGIT_NUMBER"
+                        }
+                    ],
+                    "samples": [
+                        "when is the schedule time for the {Course} {CourseCode} exam",
+                        "what is the scheduled time for the {Course} {CourseCode} exam",
+                        "get {Course} {CourseCode} scheduled exam",
+                        "get {Course} {CourseCode} exam time",
+                        "get time for {Course} {CourseCode} exam",
+                        "get time of {Course} {CourseCode} exam",
+                        "get me exam schedule of {Course} {CourseCode}",
+                        "get me exam time of {Course} {CourseCode}",
+                        "get exam schedule of {Course} {CourseCode}",
+                        "get exam time of {Course} {CourseCode}",
+                        "get exam schedule for {Course} {CourseCode}",
+                        "get exam time for {Course} {CourseCode}",
+                        "I forgot when does the exam for {Course} {CourseCode} take place",
+                        "I forgot the exam schedule for {Course} {CourseCode}",
+                        "I forgot when is the time of the {Course} {CourseCode} exam",
+                        "I forgot the time for the {Course} {CourseCode} exam",
+                        "I forgot the schedule of the {Course} {CourseCode} exam",
+                        "I forgot when I need to take the {Course} {CourseCode} exam",
+                        "I forgot my {Course} {CourseCode} exam time",
+                        "I don't know when I need to take the exam for {Course} {CourseCode}",
+                        "find the exam start time of {Course} {CourseCode}",
+                        "get the exam time of {Course} {CourseCode}",
+                        "get the exam schedule of {Course} {CourseCode}",
+                        "get the exam time for {Course} {CourseCode}",
+                        "exam time for {Course} {CourseCode}",
+                        "I forgot the time of the {Course} {CourseCode} exam",
+                        "I can't remember when my {Course} {CourseCode} exam is",
+                        "I forgot the time of my {Course} {CourseCode} exam",
+                        "when am I scheduled for the {Course} {CourseCode} exam",
+                        "when am I scheduled to take the {Course} {CourseCode} exam",
+                        "when is it time for me to take the {Course} {CourseCode} exam",
+                        "when is my exam time for {Course} {CourseCode}",
+                        "when is the scheduled exam time of {Course} {CourseCode}",
+                        "what is the scheduled exam time for {Course} {CourseCode}",
+                        "what is the exam time for {Course} {CourseCode}",
+                        "when is the scheduled exam time for {Course} {CourseCode}",
+                        "get the schedule for the {Course} {CourseCode} exam",
+                        "get the time for the {Course} {CourseCode} exam",
+                        "get the schedule for {Course} {CourseCode} exam",
+                        "get the time for {Course} {CourseCode} exam",
+                        "time for {Course} {CourseCode} exam",
+                        "{Course} {CourseCode} time",
+                        "{Course} {CourseCode} exam begin time",
+                        "schedule of {Course} {CourseCode} exam",
+                        "what is the time of {Course} {CourseCode} exam",
+                        "I don't know when is my {Course} {CourseCode} exam",
+                        "I don't know when my exam for {Course} {CourseCode} is",
+                        "at what time do I take the {Course} {CourseCode} exam",
+                        "when is the exam time of {Course} {CourseCode}",
+                        "when is the exam of {Course} {CourseCode}",
+                        "when do I take the {Course} {CourseCode} exam",
+                        "I want to know when I need to take the exam for {Course} {CourseCode}",
+                        "I want to know the exam time for {Course} {CourseCode}",
+                        "when is my {Course} {CourseCode} exam",
+                        "when do I need to take the {Course} {CourseCode} exam",
+                        "when is the exam time for {Course} {CourseCode}",
+                        "when does the exam of {Course} {CourseCode} take place",
+                        "find the exam schedule of {Course} {CourseCode}",
+                        "find the exam time of {Course} {CourseCode}",
+                        "find the exam time for {Course} {CourseCode}",
+                        "find me the time of {Course} {CourseCode} exam",
+                        "I don't know at what time does the exam for {Course} {CourseCode} begin",
+                        "I don't know at what time does the exam for {Course} {CourseCode} start",
+                        "at what time does the exam for {Course} {CourseCode} begin",
+                        "at what time does the exam for {Course} {CourseCode} start",
+                        "when does the exam of {Course} {CourseCode} begin",
+                        "when does the exam for {Course} {CourseCode} start",
+                        "I don't know when the {Course} {CourseCode} exam starts",
+                        "give me the time for {Course} {CourseCode} exam",
+                        "give me time of {Course} {CourseCode} exam",
+                        "exam schedule for {Course} {CourseCode}",
+                        "exam schedule of {Course} {CourseCode}",
+                        "start time of {Course} {CourseCode}",
+                        "get the exam schedule for {Course} {CourseCode}",
+                        "get the exam start time for {Course} {CourseCode}",
+                        "when does the exam for {Course} {CourseCode} take place",
+                        "when is the {Course} {CourseCode} exam start time",
+                        "when does the exam of {Course} {CourseCode} start",
+                        "I don't know the {Course} {CourseCode} exam time",
+                        "{Course} {CourseCode} exam start time",
+                        "I want the {Course} {CourseCode} exam time",
+                        "I need to know when does the {Course} {CourseCode} exam start",
+                        "I need to know when does the {Course} {CourseCode} exam begin",
+                        "when does the {Course} {CourseCode} exam begin",
+                        "get me the exam start time for {Course} {CourseCode}",
+                        "I need to know the schedule for the {Course} {CourseCode} exam",
+                        "I need to know the start time for the {Course} {CourseCode} exam",
+                        "what is the start time of the {Course} {CourseCode} exam",
+                        "start time for {Course} {CourseCode} exam",
+                        "when does the {Course} {CourseCode} begin",
+                        "when does the {Course} {CourseCode} exam start",
+                        "find the exam schedule for {Course} {CourseCode}",
+                        "find the exam start time for {Course} {CourseCode}",
+                        "give me the schedule for the {Course} {CourseCode} exam",
+                        "give me the time for the {Course} {CourseCode} exam",
+                        "at what time is the exam for {Course} {CourseCode}",
+                        "when does the exam for {Course} {CourseCode} begin",
+                        "what is the start time for the {Course} {CourseCode} exam",
+                        "time of exam for {Course} {CourseCode}",
+                        "exam schedule for {Course} {CourseCode} exam",
+                        "exam time for {Course} {CourseCode} exam",
+                        "get me the schedule of the {Course} {CourseCode} exam",
+                        "get me the time of the {Course} {CourseCode} exam",
+                        "fetch the exam time of {Course} {CourseCode}",
+                        "fetch the exam schedule of {Course} {CourseCode}",
+                        "fetch the exam schedule for {Course} {CourseCode}",
+                        "fetch the exam time for {Course} {CourseCode}",
+                        "get me the exam schedule for {Course} {CourseCode}",
+                        "get me the exam time for {Course} {CourseCode}",
+                        "find the time of the {Course} {CourseCode} exam",
+                        "find the time of {Course} {CourseCode} exam",
+                        "exam time of {Course} {CourseCode}",
+                        "exam time of {Course} {CourseCode} exam",
+                        "start time of {Course} {CourseCode} exam",
+                        "at what time do {Course} {CourseCode} exam start",
+                        "at what time does the {Course} {CourseCode} exam start",
+                        "at what time does {Course} {CourseCode} exam begin",
+                        "at what time does the {Course} {CourseCode} exam begin",
+                        "what times does the {Course} {CourseCode} exam begin",
+                        "what time does {Course} {CourseCode} exam begin",
+                        "{Course} {CourseCode} schedule",
+                        "{Course} {CourseCode} exam time",
+                        "when does te {Course} {CourseCode} exam take place",
+                        "when is the time of the {Course} {CourseCode} exam",
+                        "when is {Course} {CourseCode} exam",
+                        "get me the schedule for {Course} {CourseCode} exam",
+                        "time of {Course} {CourseCode} exam",
+                        "timetable for {Course} {CourseCode}",
+                        "schedule for {Course} {CourseCode}",
+                        "when is the exam for {Course} {CourseCode}",
+                        "{Course} {CourseCode} exam timetable",
+                        "{Course} {CourseCode} exam schedule",
+                        "when is the {Course} {CourseCode} exam"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "StudyRoomEnumeration",
+                    "values": [
+                        {
+                            "id": "312",
+                            "name": {
+                                "value": "three one two",
+                                "synonyms": [
+                                    "three twelve"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "141",
+                            "name": {
+                                "value": "one four one",
+                                "synonyms": [
+                                    "one forty one"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "140",
+                            "name": {
+                                "value": "one four zero",
+                                "synonyms": [
+                                    "one forty"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "138",
+                            "name": {
+                                "value": "one three eight",
+                                "synonyms": [
+                                    "one thirty eight"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "137",
+                            "name": {
+                                "value": "one three seven",
+                                "synonyms": [
+                                    "one thirty seven"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "130I",
+                            "name": {
+                                "value": "one three zero i",
+                                "synonyms": [
+                                    "one thirty i"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "130H",
+                            "name": {
+                                "value": "one three zero h",
+                                "synonyms": [
+                                    "one thirty h"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "130G",
+                            "name": {
+                                "value": "one three zero g",
+                                "synonyms": [
+                                    "one thirty g"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "130F",
+                            "name": {
+                                "value": "one three zero f",
+                                "synonyms": [
+                                    "one thirty f"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "130E",
+                            "name": {
+                                "value": "one three zero e",
+                                "synonyms": [
+                                    "one thirty e"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "130D",
+                            "name": {
+                                "value": "one three zero d",
+                                "synonyms": [
+                                    "one thirty d"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "CourseType",
+                    "values": [
+                        {
+                            "id": "BusinessLaw",
+                            "name": {
+                                "value": "B. LAW"
+                            }
+                        },
+                        {
+                            "id": "Mathematics",
+                            "name": {
+                                "value": "MATH"
+                            }
+                        },
+                        {
+                            "id": "ComputerScience",
+                            "name": {
+                                "value": "COMP"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "StudyRoomScheduleIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "StudyRoom",
+                            "type": "StudyRoomEnumeration",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.549981637989.983644580790"
+                            },
+                            "validations": [
+                                {
+                                    "type": "hasEntityResolutionMatch",
+                                    "prompt": "Slot.Validation.549981637989.983644580790.1544630141763"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "ExamScheduleIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "Course",
+                            "type": "CourseType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {},
+                            "validations": [
+                                {
+                                    "type": "hasEntityResolutionMatch",
+                                    "prompt": "Slot.Validation.1500847822904.688952819429.238718030485"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "CourseCode",
+                            "type": "AMAZON.FOUR_DIGIT_NUMBER",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.549981637989.983644580790",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Please provide a room I.D."
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.549981637989.983644580790.1544630141763",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Please provide a valid room I.D."
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.1500847822904.688952819429.238718030485",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "I do not know that course. Valid courses are math, comp and b law."
+                    }
+                ]
+            }
+        ]
+    }
+}

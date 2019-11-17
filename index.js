@@ -85,6 +85,24 @@ const studyRoomScheduleIntentHandler = {
     }
 };
 
+const examScheduleIntentHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === "IntentRequest"
+        && Alexa.getIntentName(handlerInput.requestEnvelope) === "ExamScheduleIntent";
+    },
+
+    async handle(handlerInput) {
+        const params = {
+            Bucket: "etc-bucket-a01021558",
+            Key: "exam_schedule.json"
+        };
+
+        return handlerInput.responseBuilder
+            .speak("Getting course schedule.")
+            .getResponse();
+    }
+};
+
 const errorHandler = {
     canHandle() {
         return true;
@@ -104,7 +122,8 @@ exports.handler = async (event, context, callback) => {
         skill = Alexa.SkillBuilders.custom()
             .addRequestHandlers(
                 launchRequestHandler,
-                studyRoomScheduleIntentHandler
+                studyRoomScheduleIntentHandler,
+                examScheduleIntentHandler
             )
             .addErrorHandlers(errorHandler)
             .create();
