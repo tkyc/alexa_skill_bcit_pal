@@ -1,0 +1,41 @@
+{
+    "exams": 
+    [
+        {
+            "course": "MATH3042",
+            "time": "2:00PM to 4:00PM",
+            "building": "S.E 12",
+            "room": "321"
+        },
+        {
+            "course": "COMP4968",
+            "time": "12:30PM to 2:30PM",
+            "building": "S.W 3",
+            "room": "123"
+        },
+        {
+            "course": "COMP4964",
+            "time": "1:30PM to 3:00PM",
+            "building": "S.E 12",
+            "room": "320"
+        },
+        {
+            "course": "COMP4711",
+            "time": "9:00AM to 11:00AM",
+            "building": "S.E 12",
+            "room": "320"
+        },
+        {
+            "course": "BLAW3600",
+            "time": "7:00AM to 9:00AM",
+            "building": "S.W 1",
+            "room": "220"
+        },
+        {
+            "course": "COMP4735",
+            "time": "4:00PM to 7:00PM",
+            "building": "S.W 1",
+            "room": "220"
+        }
+    ]
+}
