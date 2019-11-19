@@ -1,4 +1,7 @@
-﻿when is the schedule time for the {Course} {CourseCode} exam
+﻿get me the time for the {Course} {CourseCode} exam
+get me the time of {Course} {CourseCode} exam
+get me the time for {Course} {CourseCode} exam
+when is the schedule time for the {Course} {CourseCode} exam
 what is the scheduled time for the {Course} {CourseCode} exam
 get {Course} {CourseCode} scheduled exam
 get {Course} {CourseCode} exam time

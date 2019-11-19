@@ -6,7 +6,7 @@ const ExamIntentUtils = require("../utils/ExamIntentUtils");
 const handler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === "IntentRequest"
-        && Alexa.getIntentName(handlerInput.requestEnvelope) === "ExamScheduleIntent";
+        && Alexa.getIntentName(handlerInput.requestEnvelope) === "ExamLocationIntent";
     },
 
     async handle(handlerInput) {
@@ -14,7 +14,7 @@ const handler = {
                        `${Alexa.getSlotValue(handlerInput.requestEnvelope, "CourseCode")}`;
 
         return handlerInput.responseBuilder
-            .speak(await ExamIntentUtils.examIntentResponse(course, "schedule"))
+            .speak(await ExamIntentUtils.examIntentResponse(course, "location"))
             .getResponse();
     }
 };
