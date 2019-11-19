@@ -29,7 +29,13 @@ const constants = {
         "comp4711": 3,
         "B. law3600": 4,
         "comp4735": 5
-    }
+    },
+
+    bucket: "etc-bucket-a01021558",
+
+    examSchedule: "exam_schedule.json",
+
+    studyRoomSchedule: "schedule.json"
 };
 
 module.exports = constants;

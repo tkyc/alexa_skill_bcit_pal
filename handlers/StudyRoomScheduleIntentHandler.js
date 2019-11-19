@@ -13,8 +13,8 @@ const handler = {
 
     async handle(handlerInput) {
         const params = {
-            Bucket: "etc-bucket-a01021558",
-            Key: "schedule.json"
+            Bucket: Constants.bucket,
+            Key: Constants.studyRoomSchedule
         };
 
         const roomId = Alexa.getSlotValue(handlerInput.requestEnvelope, "StudyRoom");

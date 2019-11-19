@@ -7,8 +7,8 @@ const s3 = new AWS.S3();
 const utils = {
     examIntentResponse: (course, responseType) => {
         const params = {
-            Bucket: "etc-bucket-a01021558",
-            Key: "exam_schedule.json"
+            Bucket: Constants.bucket,
+            Key: Constants.examSchedule
         };
         
         if (Constants.courseMap[course] == null) {
